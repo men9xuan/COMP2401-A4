@@ -4,10 +4,10 @@ all: 	display rrtMaker main
 	gcc -o $(OUT) $(OBJ) -lm -lX11
 
 display: 	display.c display.h obstacles.h
-	gcc -c display.c -lX11
+	gcc -c display.c
 
 rrtMaker: 	rrtMaker.c obstacles.h display.h
-	gcc -c rrtMaker.c -lm
+	gcc -c rrtMaker.c 
 
 main: rrtTester.c display.h obstacles.h
 	gcc -c rrtTester.c 
