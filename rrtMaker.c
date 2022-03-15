@@ -87,17 +87,18 @@ void createRRT(Environment *env)
 		newRRT[i] = NULL;
 	}
 
-	for (int i = 0; i < (env->maximumNodes); i++)
-	{
-		newRRT[i] = (TreeNode *)malloc(sizeof(TreeNode));
-		if (newRRT[i] == NULL)
-		{
-			printf("error: could not allocate memory for TreeNode\n");
-			exit(1);
-		}
-	}
+	// for (int i = 0; i < (env->maximumNodes); i++)
+	// {
+	// 	newRRT[i] = (TreeNode *)malloc(sizeof(TreeNode));
+	// 	if (newRRT[i] == NULL)
+	// 	{
+	// 		printf("error: could not allocate memory for TreeNode\n");
+	// 		exit(1);
+	// 	}
+	// }
 
 	env->rrt = newRRT;
+	newRRT[0] = (TreeNode *) malloc(sizeof (TreeNode));
 	// create first treeNode of RRT
 	newRRT[0]->parent = NULL;
 	newRRT[0]->x = env->startX;
