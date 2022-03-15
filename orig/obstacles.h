@@ -16,7 +16,7 @@ typedef struct node {
     struct child *firstChild;		// The first child in a singly-linked list of children
 } TreeNode;
 
-// self referenceing
+
 // This represents a linked-list of children of a treenode
 typedef struct child {
 	TreeNode      *node;			// A child of a tree node

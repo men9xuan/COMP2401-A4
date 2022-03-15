@@ -102,7 +102,6 @@ void createRRT(Environment *env)
 {
 	TreeNode **newRRT = NULL;
 	newRRT = (TreeNode **)malloc(sizeof(TreeNode *) * (env->maximumNodes));
-	printf("env->maximumNodes %d \n", env->maximumNodes);
 	if (newRRT == NULL)
 	{
 		printf("error: could not allocate memory for rrt\n");
@@ -140,7 +139,7 @@ void createRRT(Environment *env)
 		double angle = atan2(qy - (n->y), qx - (n->x));
 		cx = n->x + cos(angle) * env->growthAmount;
 		cy = n->y + sin(angle) * env->growthAmount;
-		if (intersectObstacles(n->x, n->y, cx, cy, env) == 0)
+		if (intersectObstacles(n->x, n->y, cx, cy, env) == 0 && insideObstacles(cx, cy, env) == 0)
 		// if (intersectObstacles(qx, qy, cx, cy, env) == 0)
 
 		{
@@ -182,10 +181,44 @@ void createRRT(Environment *env)
 // Trace the path back from the node that is closest to the given (x,y) coordinate to the root
 void tracePath(Environment *env, unsigned short x, unsigned short y)
 {
+	TreeNode *start = findClosest(x, y, env);
+	TreeNode *startOrig = start;
+	int pathCount = 0;
+	while (start != NULL && start->parent)
+	{
+		// printf("Start node x:%d y:%d\n", start->x, start->y);
+		pathCount++;
+		start = start->parent;
+	}
+	env->path = malloc(sizeof(TreeNode *) * (pathCount + 1));
+	if (env->path == NULL)
+	{
+		printf("Error: no memory for malloc path pointers\n");
+		exit(1);
+	}
+	// for(int i = 0; i<(pathCount-3); i++){
+	for (int i = 0; i < (pathCount + 1); i++)
+	{
+		env->path[i] = startOrig;
+		startOrig = startOrig->parent;
+	}
 }
 
 // This procedure cleans up everything by creeing all alocated memory
 void cleanupEverything(Environment *env)
 {
 	free(env->obstacles);
+	for (int i = 0; i < (env->maximumNodes); i++)
+	{	
+		Child *child = env->rrt[i]->firstChild;
+		Child *temp;
+		while(child){
+			temp = child;
+			free(temp);
+			child=child->nextSibling;
+		} 
+		free(env->rrt[i]);
+	}
+	free(env->rrt);
+	free(env->path);
 }
