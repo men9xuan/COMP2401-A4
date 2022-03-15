@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     /*******************************************************************************************/
   	environmentNumber = 1;
 	environment.growthAmount = 25;
-	environment.maximumNodes = 200; //100
+	environment.maximumNodes = 400; //100
 	// // added this
 	// environment.numNodes = 0;
 
