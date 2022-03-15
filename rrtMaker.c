@@ -209,14 +209,15 @@ void cleanupEverything(Environment *env)
 {
 	free(env->obstacles);
 	for (int i = 0; i < (env->maximumNodes); i++)
-	{	
+	{
 		Child *child = env->rrt[i]->firstChild;
 		Child *temp;
-		while(child){
+		while (child)
+		{
 			temp = child;
+			child = child->nextSibling;
 			free(temp);
-			child=child->nextSibling;
-		} 
+		}
 		free(env->rrt[i]);
 	}
 	free(env->rrt);

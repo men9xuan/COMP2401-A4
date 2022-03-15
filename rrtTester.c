@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	/*******************************************************************************************/
 	/* Replace the three lines below with numbers that are read in from command line arguments */
 	/*******************************************************************************************/
-	if (argc != 4)
+	if (argc < 4)
 		quit();
 	environmentNumber = atoi(argv[3]);
 	int growthAmount = atoi(argv[1]);
