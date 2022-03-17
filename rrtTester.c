@@ -12,7 +12,9 @@ void quit()
 	printf("This program should take in three command-line arguments which are:\n \
   (1) the edge growth length for each tree branch and\n \
   (2) the maximum number of tree nodes to create\n \
-  (3) the environment number to test [1-5]\n");
+  (3) the environment number to test [1-5]\n \
+  Note: a forth argument is accepted for mem leak test\n \
+  valgrind ./rrtTester 25 200 1 leakcheck==yes\n\n");
 	exit(-1);
 }
 
@@ -31,18 +33,19 @@ int main(int argc, char *argv[])
 	/*******************************************************************************************/
 	/* Replace the three lines below with numbers that are read in from command line arguments */
 	/*******************************************************************************************/
-	if (argc < 4)
+	printf("argc: %d\n", argc);
+	if (argc < 4 || argc > 5)
 		quit();
 	environmentNumber = atoi(argv[3]);
 	int growthAmount = atoi(argv[1]);
 	int maximumNodes = atoi(argv[2]);
-	if (maximumNodes <0 || growthAmount<0)
+	if (maximumNodes < 0 || growthAmount < 0)
 		quit();
 	if (environmentNumber > 5 || environmentNumber < 1)
 		quit();
 
 	environment.growthAmount = growthAmount;
-	environment.maximumNodes = maximumNodes; 
+	environment.maximumNodes = maximumNodes;
 
 	/********************************************************/
 	/* YOU MUST NOT CHANGE ANY CODE BENEATH THIS COMMENT !! */
