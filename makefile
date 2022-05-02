@@ -18,3 +18,4 @@ clean:
 cleanall:
 	rm -f *.o
 	rm -f $(OUT)
+	
