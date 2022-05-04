@@ -3,7 +3,7 @@
 
 This program generates a RRT which avoids obsticles from a given environment and traces a path from root to the closest node in the tree to a given (x,y) coordinate.
 
-![Screenshots for 5 environments ](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Screenshots for 5 environments ](https://github.com/men9xuan/COMP2401-A4/raw/main/screenshots.gif)
 
 ### Compile Instructions:
 
