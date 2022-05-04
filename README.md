@@ -1,19 +1,24 @@
-# COMP2401A4
+## Rapidly-exploring Random Tree (RRT) generator
 
-Compile Instructions:
+
+This program generates a RRT which avoids obsticles from a given environment and traces a path from root to the closest node in the tree to a given (x,y) coordinate.
+
+![Screenshots for 5 environments ](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+### Compile Instructions:
 
 make
 
-Run Instructions:
+### Run Instructions:
 
-./rrtTester \<growthLength\> \<maxNodes\> \<enviromentVariable\>
+```./rrtTester \<growthLength\> \<maxNodes\> \<enviromentVariable\>```
   
-  growthLength:  the edge growth length for each tree branch
+  > growthLength:  the edge growth length for each tree branch
   
-  maxNodes: the maximum number of tree nodes to create
+  > maxNodes: the maximum number of tree nodes to create
   
-  enviromentVariable: the environment number to test \[1-5\]
+  > enviromentVariable: the environment number to test \[1-5\]
 
-Sample Mem Test Instructions:
+Sample run instruction:
 
-valgrind ./rrtTester 25 200 1 leakcheck==yes
+```./rrtTester 25 200 1 ```
