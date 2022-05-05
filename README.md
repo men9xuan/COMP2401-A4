@@ -11,7 +11,7 @@ This program generates a RRT which avoids obsticles from a given environment and
 
 ### Compile Instructions:
 
-make
+```make```
 
 ### Run Instructions:
 
